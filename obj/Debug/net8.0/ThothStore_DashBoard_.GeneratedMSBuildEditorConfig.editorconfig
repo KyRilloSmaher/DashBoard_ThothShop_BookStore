@@ -1,0 +1,123 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ThothStore_DashBoard_
+build_property.RootNamespace = ThothStore_DashBoard_
+build_property.ProjectDir = C:\Users\NanoChip\Desktop\ASP.Net_WorkSpace\ThothStore_DashBoard_\ThothStore_DashBoard_\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\NanoChip\Desktop\ASP.Net_WorkSpace\ThothStore_DashBoard_\ThothStore_DashBoard_
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Account/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Admin/ConfirmRestPasswordCode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29uZmlybVJlc3RQYXNzd29yZENvZGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Admin/CreateAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Admin/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Admin/ResetPasswordPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZXRQYXNzd29yZFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Admin/UpdateAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Analytic/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNcSG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Author/CreateAuthor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yXENyZWF0ZUF1dGhvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Author/DeleteAuthor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yXERlbGV0ZUF1dGhvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Author/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yXEhvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Author/UpdateAuthor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yXFVwZGF0ZUF1dGhvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Book/CreateBookPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xDcmVhdGVCb29rUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Book/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Book/UpdateBookPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xVcGRhdGVCb29rUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Category/CreateCategoryPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlQ2F0ZWdvcnlQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Category/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Category/UpdateCategoryPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcVXBkYXRlQ2F0ZWdvcnlQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Home/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Order/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/NanoChip/Desktop/ASP.Net_WorkSpace/ThothStore_DashBoard_/ThothStore_DashBoard_/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-y3c6u7xqcn

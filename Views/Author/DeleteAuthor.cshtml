@@ -1,0 +1,64 @@
+﻿@model ThothStore_DashBoard.Models.Author.AuthorResponse
+<style>
+    body {
+        background-color: #000; /* black background */
+        color: gold; /* gold text */
+    }
+
+    .form-container {
+        margin-top: 50px;
+        background-color: #111; /* dark black-ish form background */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px gold;
+    }
+
+    .form-control {
+        background-color: #222;
+        border: 1px solid gold;
+        color: gold;
+    }
+
+        .form-control::placeholder {
+            color: #ccc;
+        }
+
+    label {
+        font-weight: bold;
+        color: gold;
+    }
+
+    .btn-gold {
+        background-color: gold;
+        color: black;
+        border: none;
+        margin-top: 10px;
+    }
+
+        .btn-gold:hover {
+            background-color: #ffd700;
+            color: black;
+        }
+
+    .validation-summary-errors {
+        color: red;
+    }
+</style>
+
+<div class="container form-container">
+    <h2 class="text-center">Delete Author</h2>
+    <p>
+        Author Name : @Model.Name <br/>
+        Author Bio : @Model.Bio <br/>
+        Author Nationality : @Model.Nationality <br />
+        Author Gender : @Model.Gender <br/>
+    </p>
+    <a asp-controller="Author" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">Confirm Deletion</a>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

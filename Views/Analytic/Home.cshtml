@@ -1,0 +1,251 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <div class="top-bar">
+        <input type="text" placeholder="Search analytics...">
+        <div class="user-icon"><i class="fas fa-bell"></i><img src="user.png" alt="User"></div>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            @ViewBag.Error
+        </div>
+    }
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Sales</h3>
+            <p><span>$</span>@ViewBag.TotalSales</p>
+            <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+        </div>
+        <div class="card">
+            <h3>Total Orders</h3>
+            <p>@ViewBag.NumberOfOrders</p>
+            <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+        </div>
+        <div class="card">
+            <h3>Total Books</h3>
+            <p>@ViewBag.TotalNumberOfBooks</p>
+            <div class="card-icon"><i class="fas fa-book"></i></div>
+        </div>
+        <div class="card">
+            <h3>Count of Authors</h3>
+            <p>@ViewBag.AuthorCount</p>
+            <div class="card-icon"><i class="fas fa-user"></i></div>
+        </div>
+    </div>
+
+    <div class="analytics-cards">
+        <div class="card">
+            <h3>Average Order Value</h3>
+            <p><span>$</span>@ViewBag.AverageOrderValue</p>
+            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+        </div>
+        <div class="card">
+            <h3>Books per Author</h3>
+            <p>@ViewBag.BooksPerAuthor</p>
+            <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="chart-section">
+        <div class="chart-container">
+            <h3>Sales Analytics Overview</h3>
+            <canvas id="salesChart" width="400" height="200"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Inventory Distribution</h3>
+            <canvas id="inventoryChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="recent-orders">
+            <h3>Recent Orders</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Items Quantity</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.RecentOrders)
+                    {
+                        <tr>
+                            <td>@item.UserId</td>
+                            <td>@item.Items.Count</td>
+                            <td>$ @item.TotalPrice</td>
+                            <td><span class="status">@item.Status</span></td>
+                            <td>@item.CreatedAt.ToString("MM/dd/yyyy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="top-authors">
+            <h3>Top Authors</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Author Name</th>
+                        <th>Gender</th>
+                        <th>Nationality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.TopAuthors)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Gender</td>
+                            <td>@item.Nationality</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="top-selling-books">
+            <h3>Top Selling Books</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Category Name</th>
+                        <th>Stock Count</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.TopSellingBooks)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.CategoryName</td>
+                            <td>@item.Stock</td>
+                            <td>$ @item.Price</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="out-of-stock-books">
+            <h3>Out of Stock Books</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Category Name</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.OutOfStockBooks)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.CategoryName</td>
+                            <td>$ @item.Price</td>
+                            <td><span class="status out-of-stock">Out of Stock</span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+<link rel="stylesheet" href="~/css/Analytic.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Sales Chart
+    const salesCtx = document.getElementById('salesChart').getContext('2d');
+    const salesChart = new Chart(salesCtx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Monthly Sales ($)',
+                data: [@ViewBag.TotalSales * 0.8, @ViewBag.TotalSales * 0.9, @ViewBag.TotalSales * 0.85, @ViewBag.TotalSales * 1.1, @ViewBag.TotalSales * 1.2, @ViewBag.TotalSales],
+                borderColor: '#FFD700',
+                backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#fff'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#fff'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#fff'
+                    }
+                }
+            }
+        }
+    });
+
+    // Inventory Distribution Chart
+    const inventoryCtx = document.getElementById('inventoryChart').getContext('2d');
+    const inventoryChart = new Chart(inventoryCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Books in Stock', 'Out of Stock', 'Low Stock'],
+            datasets: [{
+                data: [@ViewBag.TotalNumberOfBooks, @ViewBag.OutOfStockBooks.Count, @ViewBag.TotalNumberOfBooks * 0.1],
+                backgroundColor: [
+                    '#4CAF50',
+                    '#f44336',
+                    '#FF9800'
+                ],
+                borderColor: '#1e1e1e',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#fff',
+                        padding: 20
+                    }
+                }
+            }
+        }
+    });
+</script>

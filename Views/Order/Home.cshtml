@@ -1,0 +1,239 @@
+﻿@model ThothStore_DashBoard.Models.Order.VM.OrderHomePageVM
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" />
+<style>
+    body {
+        background-color: #000;
+        color: gold;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Disable fullPage.js default centering */
+    .fp-section, .fp-slide, .fp-tableCell {
+        height: auto !important;
+        display: block !important;
+    }
+
+    .fp-section {
+        padding: 20px 0;
+    }
+
+    /* Your custom styles */
+    .card-custom {
+        background-color: #111;
+        border: 1px solid gold;
+        box-shadow: 0 0 10px gold;
+    }
+
+    .btn-gold {
+        background-color: gold;
+        color: black;
+        font-weight: bold;
+        border: none;
+    }
+
+        .btn-gold:hover {
+            background-color: #ffd700;
+            color: black;
+        }
+
+    .btn-danger {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+    }
+
+        .btn-danger:hover {
+            background-color: #e60000;
+            color: white;
+        }
+
+    .table th, .table td {
+        border: 1px solid gold;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .table th {
+        background-color: #222;
+    }
+
+    .table {
+        background-color: #111;
+        color: gold;
+        margin-bottom: 20px;
+    }
+
+    .pagination .page-link {
+        color: gold;
+        background-color: #222;
+        border: 1px solid gold;
+        margin: 2px;
+    }
+
+        .pagination .page-link:hover {
+            background-color: gold;
+            color: black;
+        }
+
+    .pagination .active .page-link {
+        background-color: gold;
+        color: black;
+        border-color: gold;
+    }
+
+    /* Container adjustments */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Navigation dots styling */
+    #fp-nav ul li a span,
+    .fp-slidesNav ul li a span {
+        background: gold !important;
+    }
+</style>
+
+<div id="fullpage">
+    <!-- Section 1: Summary+ Main Order List -->
+    <div class="section">
+        <div class="container">
+
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card card-custom text-center p-4">
+                        <h4>Orders Count</h4>
+                        <h2>@Model.orderCount</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-custom text-center p-4">
+                        <h4>Total Sales</h4>
+                        <h2>@Model.TotalSales</h2>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="mb-3">Orders List</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>ItemsQuantity</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in @Model.Allorders.orders)
+                    {
+                        <tr>
+                            <td>@order.UserId</td>
+                            <td>@order.Items.Count</td>
+                            <td>$ @order.TotalPrice </td>
+                            <td><span class="status">@order.Status</span></td>
+                            <td>@order.CreatedAt</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (Model.Allorders.TotalPages > 1)
+            {
+                <nav class="text-center">
+                    <ul class="pagination justify-content-center">
+                        @for (int i = 1; i <= Model.Allorders.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.Allorders.CurrentPage ? "active" : "")">
+                                <a class="page-link" asp-action="Home" asp-route-PageNumber="@i" asp-route-PageSize=10>@i</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+
+    <!-- Section 2: UnComplete Orders List -->
+    <div class="section">
+        <div class="container">
+            <h3> UnComplete Orders</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>ItemsQuantity</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.UnCompleteOrders)
+                    {
+                        <tr>
+                            <td>@item.UserId</td>
+                            <td>@item.Items.Count</td>
+                            <td>$ @item.TotalPrice </td>
+                            <td><span class="status">@item.Status</span></td>
+                            <td>@item.CreatedAt</td>
+                            <td><a asp-controller="Author" asp-action="OpenDeletePage" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Update</a></td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Section 3: Recent Order List -->
+    <div class="section">
+        <div class="container">
+            <h3>Recent Orders</h3>
+            <table class="table">
+                <thead>
+                    <tr><th>Customer ID</th><th>ItemsQuantity</th><th>Price</th><th>Status</th><th>Date</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.RecentOrders)
+                    {
+                        <tr>
+                            <td>@item.UserId</td>
+                            <td>@item.Items.Count</td>
+                            <td>$ @item.TotalPrice </td>
+                            <td><span class="status">@item.Status</span></td>
+                            <td>@item.CreatedAt</td>
+                        </tr>
+
+                    }
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
+<script>
+    new fullpage('#fullpage', {
+        autoScrolling: true,
+        scrollHorizontally: true,
+        fitToSection: false, // Disable auto-fitting
+        scrollBar: false,
+        navigation: true,
+        navigationPosition: 'right',
+        // Add padding top to account for fixed headers if needed
+        paddingTop: '0',
+        paddingBottom: '0',
+        // Allow normal scrolling behavior
+        normalScrollElements: '.table, .container',
+        // Disable the auto-padding that fullPage.js adds
+        css3: false
+    });
+</script>

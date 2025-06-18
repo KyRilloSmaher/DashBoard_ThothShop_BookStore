@@ -1,0 +1,78 @@
+﻿@model ThothStore_DashBoard.Models.Category.CategoryResposnse
+
+<style>
+    body {
+        background-color: #000; /* black background */
+        color: gold; /* gold text */
+    }
+
+    .form-container {
+        margin-top: 50px;
+        background-color: #111; /* dark black-ish form background */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px gold;
+    }
+
+    .form-control {
+        background-color: #222;
+        border: 1px solid gold;
+        color: gold;
+    }
+
+        .form-control::placeholder {
+            color: #ccc;
+        }
+
+    label {
+        font-weight: bold;
+        color: gold;
+    }
+
+    .btn-gold {
+        background-color: gold;
+        color: black;
+        border: none;
+        margin-top: 10px;
+    }
+
+        .btn-gold:hover {
+            background-color: #ffd700;
+            color: black;
+        }
+
+    .validation-summary-errors {
+        color: red;
+    }
+</style>
+
+<div class="container form-container">
+    <h2 class="text-center">Update Category</h2>
+
+    <form asp-action="UpdateCategory" asp-controller="Category" method="post">
+        <div asp-validation-summary="All" class="validation-summary-errors"></div>
+
+        <div class="form-group">
+            <label asp-for="Id"></label>
+            <input asp-for="Id" class="form-control" value="@Model.Id" contenteditable="false" />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" value="@Model.Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-gold btn-lg">Update</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

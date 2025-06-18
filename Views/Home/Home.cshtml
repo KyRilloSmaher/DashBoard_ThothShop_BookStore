@@ -1,0 +1,325 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- Dashboard Overview -->
+<div class="dashboard-cards">
+    <div class="stat-card success">
+        <div class="stat-header">
+            <span class="stat-title">Total Sales</span>
+            <div class="stat-icon">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+        </div>
+        <div class="stat-value">$@ViewBag.TotalSales</div>
+        <div class="stat-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>12.5% from last month</span>
+        </div>
+    </div>
+
+    <div class="stat-card primary">
+        <div class="stat-header">
+            <span class="stat-title">Total Orders</span>
+            <div class="stat-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+        <div class="stat-value">@ViewBag.NumberOfOrders</div>
+        <div class="stat-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>8.2% from last month</span>
+        </div>
+    </div>
+
+    <div class="stat-card info">
+        <div class="stat-header">
+            <span class="stat-title">Total Books</span>
+            <div class="stat-icon">
+                <i class="fas fa-book"></i>
+            </div>
+        </div>
+        <div class="stat-value">@ViewBag.TotalNumberOfBooks</div>
+        <div class="stat-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>15.3% from last month</span>
+        </div>
+    </div>
+
+    <div class="stat-card warning">
+        <div class="stat-header">
+            <span class="stat-title">Total Authors</span>
+            <div class="stat-icon">
+                <i class="fas fa-user-edit"></i>
+            </div>
+        </div>
+        <div class="stat-value">@ViewBag.AuthorCount</div>
+        <div class="stat-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>5.7% from last month</span>
+        </div>
+    </div>
+</div>
+
+<!-- Content Grid -->
+<div class="content-grid">
+    <!-- Recent Orders -->
+    <div class="data-table">
+        <div class="data-table-header">
+            <h3 class="data-table-title">
+                <i class="fas fa-clock me-2"></i>
+                Recent Orders
+            </h3>
+        </div>
+        <div class="data-table-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Items</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.recentorders)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="user-avatar me-2">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <span>@item.UserId</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary">@item.Items.Count items</span>
+                            </td>
+                            <td>
+                                <strong>$@item.TotalPrice</strong>
+                            </td>
+                            <td>
+                                @{
+                                    var statusClass = item.Status switch
+                                    {
+                                        "completed" => "completed",
+                                        "pending" => "pending",
+                                        "cancelled" => "cancelled",
+                                        "processing" => "processing",
+                                        _ => "pending"
+                                    };
+                                }
+                                <span class="status-badge @statusClass">@item.Status</span>
+                            </td>
+                            <td>
+                                <small class="text-muted">@item.CreatedAt.ToString("MMM dd, yyyy")</small>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Top Authors -->
+    <div class="data-table">
+        <div class="data-table-header">
+            <h3 class="data-table-title">
+                <i class="fas fa-star me-2"></i>
+                Top Authors
+            </h3>
+        </div>
+        <div class="data-table-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Author Name</th>
+                        <th>Gender</th>
+                        <th>Nationality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.TopAuthors)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="user-avatar me-2">
+                                        <i class="fas fa-user-edit"></i>
+                                    </div>
+                                    <span>@item.Name</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge bg-info">@item.Gender</span>
+                            </td>
+                            <td>
+                                <small>@item.Nationality</small>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Trending Books -->
+<div class="data-table">
+    <div class="data-table-header">
+        <h3 class="data-table-title">
+            <i class="fas fa-fire me-2"></i>
+            Trending Books
+        </h3>
+    </div>
+    <div class="data-table-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.TopSellngBooks)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="me-2">
+                                    <i class="fas fa-book text-primary"></i>
+                                </div>
+                                <div>
+                                    <strong>@item.Title</strong>
+                                    <br>
+                                    <small class="text-muted">@item.Description.Substring(0, Math.Min(50, item.Description.Length))...</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge bg-secondary">@item.CategoryName</span>
+                        </td>
+                        <td>
+                            @if (item.Stock > 10)
+                            {
+                                <span class="badge bg-success">@item.Stock in stock</span>
+                            }
+                            else if (item.Stock > 0)
+                            {
+                                <span class="badge bg-warning">@item.Stock in stock</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Out of stock</span>
+                            }
+                        </td>
+                        <td>
+                            <strong>$@item.Price</strong>
+                        </td>
+                        <td>
+                            @if (item.Stock > 0)
+                            {
+                                <span class="status-badge completed">Available</span>
+                            }
+                            else
+                            {
+                                <span class="status-badge cancelled">Unavailable</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-plus-circle me-2"></i>
+                    Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="@Url.Action("OpenCreateBookPage", "Book")" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>
+                        Add New Book
+                    </a>
+                    <a href="@Url.Action("OpenCreateAuthorPage", "Author")" class="btn btn-success">
+                        <i class="fas fa-user-plus me-2"></i>
+                        Add New Author
+                    </a>
+                    <a href="@Url.Action("OpenCreateCategoryPage", "Category")" class="btn btn-info">
+                        <i class="fas fa-tag me-2"></i>
+                        Add New Category
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-line me-2"></i>
+                    Recent Activity
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="activity-item d-flex align-items-center mb-3">
+                    <div class="activity-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold">New order received</div>
+                        <small class="text-muted">2 minutes ago</small>
+                    </div>
+                </div>
+                
+                <div class="activity-item d-flex align-items-center mb-3">
+                    <div class="activity-icon bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold">New book added</div>
+                        <small class="text-muted">15 minutes ago</small>
+                    </div>
+                </div>
+                
+                <div class="activity-item d-flex align-items-center mb-3">
+                    <div class="activity-icon bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold">Low stock alert</div>
+                        <small class="text-muted">1 hour ago</small>
+                    </div>
+                </div>
+                
+                <div class="activity-item d-flex align-items-center">
+                    <div class="activity-icon bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold">New user registered</div>
+                        <small class="text-muted">2 hours ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="~/css/Home.css">
+
+}

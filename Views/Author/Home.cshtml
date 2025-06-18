@@ -1,0 +1,97 @@
+﻿@model ThothStore_DashBoard.Models.Author.VM.AuthorPaginededListResponse
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" />
+
+<div id="fullpage">
+    <!-- Section 1: Summary + Search + Main Books List -->
+    <div class="section">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card card-custom text-center p-4">
+                        <h4>Authors Count</h4>
+                        <h2>@Model.TotalCount</h2>
+                        <a asp-action="OpenCreateAuthorPage" asp-controller="Author" class="btn btn-gold mt-3">Create New Author</a>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card card-custom p-4">
+                        <h4 class="text-center">Search Authors</h4>
+                        <form method="get" asp-action="Search" asp-controller="Author" class="d-flex mt-3">
+                            <input type="text" name="term" class="form-control custom-search me-2" placeholder="search..." />
+                            <button type="submit" class="btn btn-gold me-2">Search</button>
+                            <a asp-action="Home" asp-controller="Author" class="btn custom-secondary">Reset</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="mb-3">Author List</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Nationality</th>
+                        <th>DateOfBirth</th>
+                     
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var author in Model.authors)
+                    {
+                        <tr>
+                            <td>@author.Name</td>
+                            <td>@author.Gender</td>
+                            <td>@author.Nationality</td>
+                            <td>@author.DateOfBirth</td>
+                         
+                            <td>
+                                <a asp-controller="Author" asp-action="OpenUpdateAuthorPage" asp-route-id="@author.Id" class="btn btn-sm btn-gold mr-2">Update</a>
+                                <a asp-controller="Author" asp-action="OpenDeletePage" asp-route-id="@author.Id" class="btn btn-sm btn-danger">Delete</a>
+                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (Model.TotalPages > 1)
+            {
+                <nav class="text-center">
+                    <ul class="pagination justify-content-center">
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                <a class="page-link" asp-action="Home" asp-route-PageNumber="@i" asp-route-PageSize=10>@i</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
+<script>
+    new fullpage('#fullpage', {
+        autoScrolling: true,
+        scrollHorizontally: true,
+        fitToSection: false, // Disable auto-fitting
+        scrollBar: false,
+        navigation: true,
+        navigationPosition: 'right',
+        // Add padding top to account for fixed headers if needed
+        paddingTop: '0',
+        paddingBottom: '0',
+        // Allow normal scrolling behavior
+        normalScrollElements: '.table, .container',
+        // Disable the auto-padding that fullPage.js adds
+        css3: false
+    });
+</script>

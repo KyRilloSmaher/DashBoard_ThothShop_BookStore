@@ -1,0 +1,107 @@
+﻿
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .top-bar input {
+        padding: 8px;
+        width: 200px;
+        border: none;
+        border-radius: 4px;
+    }
+
+.user-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    .user-icon img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+
+.cards {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.card {
+    background: #1e1e1e;
+    padding: 20px;
+    flex: 1;
+    border: 1px solid #FFD700;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.content {
+    display: grid;
+    grid-template-areas:
+        'order author '
+        'book';
+    gap: 20px;
+}
+
+.recent-orders, .top-authors, .popular-categories {
+    flex: 1;
+    background: #1e1e1e;
+    padding: 20px;
+    border: 1px solid #FFD700;
+    border-radius: 10px;
+}
+
+    .recent-orders table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+ .recent-orders th, .recent-orders td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+   }
+
+
+.top-authors table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    .top-authors th, .top-authors td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #333;
+    }
+
+
+.popular-categories table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.popular-categories th, .popular-categories td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.top-authors img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.normal-text-link {
+    text-decoration: none;
+    color: inherit;
+}

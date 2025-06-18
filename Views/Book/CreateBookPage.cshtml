@@ -1,0 +1,260 @@
+﻿@model ThothStore_DashBoard.Models.Book.CreateBookRequest
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<style>
+    body {
+        background-color: #000;
+        color: gold;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #111;
+        border: 1px solid gold;
+        box-shadow: 0 0 15px gold;
+        border-radius: 5px;
+    }
+
+    .form-title {
+        color: gold;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 1px solid gold;
+        padding-bottom: 10px;
+    }
+
+    .form-label {
+        color: gold;
+        font-weight: bold;
+    }
+
+    .form-control {
+        background-color: #222;
+        color: gold;
+        border: 1px solid gold;
+    }
+
+        .form-control:focus {
+            background-color: #333;
+            color: gold;
+            border-color: gold;
+            box-shadow: 0 0 10px gold;
+        }
+
+    .btn-gold {
+        background-color: gold;
+        color: black;
+        font-weight: bold;
+        border: none;
+    }
+
+        .btn-gold:hover {
+            background-color: #ffd700;
+            color: black;
+        }
+
+    .btn-secondary {
+        background-color: #333;
+        color: gold;
+        border: 1px solid gold;
+    }
+
+        .btn-secondary:hover {
+            background-color: #444;
+            color: gold;
+        }
+
+    .validation-summary {
+        color: #ff4d4d;
+        background-color: #111;
+        padding: 10px;
+        border: 1px solid #ff4d4d;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .field-validation-error {
+        color: #ff4d4d;
+        font-size: 0.9em;
+    }
+
+    .input-group-text {
+        background-color: #333;
+        color: gold;
+        border: 1px solid gold;
+    }
+
+    .file-input-label {
+        display: block;
+        padding: 10px;
+        background-color: #222;
+        color: gold;
+        border: 1px dashed gold;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+        .file-input-label:hover {
+            background-color: #333;
+        }
+
+    .file-name {
+        color: gold;
+        font-size: 0.9em;
+        margin-left: 10px;
+    }
+
+    .preview-image {
+        max-width: 100px;
+        max-height: 100px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border: 1px solid gold;
+    }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Create New Book</h2>
+
+    <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+    <form asp-action="CreateBook" asp-controller="Book" method="post" enctype="multipart/form-data">
+        <!-- Category -->
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label">Category</label>
+            <select asp-for="CategoryId" class="form-control" required asp-items="@(new SelectList(ViewBag.Categories,"Value","Text"))">
+                <option value="">-- Select Category --</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="field-validation-error"></span>
+        </div>
+
+        <!-- Title -->
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Title</label>
+            <input asp-for="Title" class="form-control" placeholder="Enter book title" required />
+            <span asp-validation-for="Title" class="field-validation-error"></span>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter book description" required></textarea>
+            <span asp-validation-for="Description" class="field-validation-error"></span>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Price</label>
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input asp-for="Price" type="number" step="0.01" class="form-control" placeholder="0.00" required />
+            </div>
+            <span asp-validation-for="Price" class="field-validation-error"></span>
+        </div>
+
+        <!-- Published Date -->
+        <div class="mb-3">
+            <label asp-for="PublishedDate" class="form-label">Published Date</label>
+            <input asp-for="PublishedDate" type="date" class="form-control" required />
+            <span asp-validation-for="PublishedDate" class="field-validation-error"></span>
+        </div>
+
+        <!-- Stock -->
+        <div class="mb-3">
+            <label asp-for="Stock" class="form-label">Stock Quantity</label>
+            <input asp-for="Stock" type="number" class="form-control" placeholder="Enter stock quantity" required />
+            <span asp-validation-for="Stock" class="field-validation-error"></span>
+        </div>
+
+        <!-- Primary Image -->
+        <div class="mb-3">
+            <label asp-for="PrimaryImage" class="form-label">Primary Cover Image</label>
+            <label for="PrimaryImage" class="file-input-label">
+                <i class="fas fa-upload"></i> Click to upload primary image
+                <span id="primaryFileName" class="file-name"></span>
+            </label>
+            <input asp-for="PrimaryImage" type="file" class="d-none" accept="image/*" required />
+            <div id="primaryPreview" class="mt-2"></div>
+            <span asp-validation-for="PrimaryImage" class="field-validation-error"></span>
+        </div>
+
+        <!-- Additional Images -->
+        <div class="mb-3">
+            <label asp-for="Images" class="form-label">Additional Images (Optional)</label>
+            <label for="Images" class="file-input-label">
+                <i class="fas fa-images"></i> Click to upload additional images
+                <span id="additionalFilesCount" class="file-name"></span>
+            </label>
+            <input asp-for="Images" type="file" class="d-none" accept="image/*" multiple />
+            <div id="additionalPreviews" class="d-flex flex-wrap mt-2"></div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-action="Home" asp-controller="Book" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to List
+            </a>
+            <button type="submit" class="btn btn-gold">
+                <i class="fas fa-save"></i> Create Book
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // Primary image preview
+        document.getElementById('PrimaryImage').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || 'No file selected';
+            document.getElementById('primaryFileName').textContent = fileName;
+
+            const preview = document.getElementById('primaryPreview');
+            preview.innerHTML = '';
+
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.className = 'preview-image';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // Additional images preview
+        document.getElementById('Images').addEventListener('change', function(e) {
+            const fileCount = e.target.files.length;
+            document.getElementById('additionalFilesCount').textContent =
+                fileCount > 0 ? `${fileCount} file(s) selected` : 'No files selected';
+
+            const previewContainer = document.getElementById('additionalPreviews');
+            previewContainer.innerHTML = '';
+
+            if (e.target.files && e.target.files.length > 0) {
+                for (let i = 0; i < e.target.files.length; i++) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.className = 'preview-image';
+                        previewContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(e.target.files[i]);
+                }
+            }
+        });
+
+        // Initialize date picker with today's date
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('PublishedDate').value = today;
+        });
+    </script>
+}
