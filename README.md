@@ -279,8 +279,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For support and questions:
 - 📧 Email: support@thothstore.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/ThothStore-Dashboard/issues)
-- 📖 Documentation: [Wiki](https://github.com/yourusername/ThothStore-Dashboard/wiki)
+- 🐛 Issues: [GitHub Issues](https://github.com/KyRilloSmaher/DashBoard_ThothShop_BookStore/issues)
+- 📖 Documentation: [Wiki](https://github.com/yourusername/KyRilloSmaher/DashBoard_ThothShop_BookStorewiki)
 
 ---
 
