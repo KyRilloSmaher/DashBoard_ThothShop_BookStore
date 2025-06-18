@@ -104,7 +104,7 @@ The dashboard provides administrators with powerful tools to manage books, autho
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/ThothStore-Dashboard.git
+   git clone https://github.com/KyRilloSmaher/ThothStore-Dashboard.git
    cd ThothStore-Dashboard
    ```
 
@@ -249,20 +249,9 @@ We welcome contributions to improve ThothStore Dashboard! Please follow these gu
 ### Coding Standards
 - Follow C# naming conventions
 - Use meaningful variable and method names
-- Add XML documentation for public APIs
-- Write unit tests for new functionality
 - Ensure responsive design for all UI changes
 
-### Commit Message Format
-```
-type(scope): description
 
-[optional body]
-
-[optional footer]
-```
-
-Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 ## 📄 License
 
