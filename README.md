@@ -264,6 +264,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Font Awesome**: For the comprehensive icon library
 - **ASP.NET Core Team**: For the powerful web framework
 
+## Notes 
+_ **VibeCoding** used to add more front-end awesome functionalities. 
+
 ## 📞 Support
 
 For support and questions:
